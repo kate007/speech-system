@@ -1,1 +1,14 @@
-<p>search-speech works!</p>
+
+<br/><br/><br/>
+<div class="container">
+    <input class="form-control" id="listSearch" type="text"  [(ngModel)]="searchText" placeholder="search text goes here">
+    <br>
+    <ng-container *ngIf="speechList">
+      <ul *ngFor="let speech of speechList | filter : searchText ;let i =index; " class="list-group list-group-flush">
+        <li class="list-group-item">
+          <app-speech-item *ngIf="speech" [speechItem]="speech" ></app-speech-item> 
+        
+        </li>     
+      </ul>
+    </ng-container>
+  </div>

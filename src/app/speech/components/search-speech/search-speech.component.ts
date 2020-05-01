@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Speech } from '../../models/speech.model';
+import { SpeechService } from '../../services/speech.service';
 
 @Component({
   selector: 'app-search-speech',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchSpeechComponent implements OnInit {
 
-  constructor() { }
+  speechList: Speech[] = [];
+  searchText:string = '';
+  constructor(private speechService:SpeechService ) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.speechList = this.speechService.getAll();
+      
   }
 
 }

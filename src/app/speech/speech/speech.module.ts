@@ -6,7 +6,11 @@ import { SpeechItemComponent } from '../components/speech-item/speech-item.compo
 import { AddSpeechComponent } from '../components/add-speech/add-speech.component';
 import { EditSpeechComponent } from '../components/edit-speech/edit-speech.component';
 import { SearchSpeechComponent } from '../components/search-speech/search-speech.component';
-
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { AlertModule } from 'ngx-bootstrap/alert';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { FormsModule } from '@angular/forms';
+import { FilterPipe } from '../components/pipes/filter.pipe';
 
 const routes:Routes = [ 
   {
@@ -34,18 +38,27 @@ const routes:Routes = [
     SpeechItemComponent,
     AddSpeechComponent,
     EditSpeechComponent,
-    SearchSpeechComponent
+    SearchSpeechComponent,
+    FilterPipe
   ],
   imports: [
     CommonModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    ModalModule.forRoot(),
+    AlertModule.forRoot(),
+    BsDatepickerModule.forRoot(),   
+    FormsModule
   ],
   exports:[
     ViewAllComponent,
     SpeechItemComponent,
     AddSpeechComponent,
     EditSpeechComponent,
-    SearchSpeechComponent
+    SearchSpeechComponent,
+    AlertModule,
+    ModalModule,
+    BsDatepickerModule,
+    FormsModule
   ]
 
 })
