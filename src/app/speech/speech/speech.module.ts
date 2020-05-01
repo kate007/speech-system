@@ -5,13 +5,26 @@ import { RouterModule,Routes } from '@angular/router';
 import { SpeechItemComponent } from '../components/speech-item/speech-item.component';
 import { AddSpeechComponent } from '../components/add-speech/add-speech.component';
 import { EditSpeechComponent } from '../components/edit-speech/edit-speech.component';
+import { SearchSpeechComponent } from '../components/search-speech/search-speech.component';
 
 
 const routes:Routes = [ 
   {
     path:'view-all', 
     component: ViewAllComponent
-  }
+  },
+  {
+    path:'add-speech', 
+    component: AddSpeechComponent
+  },
+  {
+    path:'edit-speech', 
+    component: EditSpeechComponent
+  },
+  {
+    path:'search-speech', 
+    component: SearchSpeechComponent
+  },
 
 ]
 
@@ -20,7 +33,8 @@ const routes:Routes = [
     ViewAllComponent,
     SpeechItemComponent,
     AddSpeechComponent,
-    EditSpeechComponent
+    EditSpeechComponent,
+    SearchSpeechComponent
   ],
   imports: [
     CommonModule,
@@ -30,7 +44,8 @@ const routes:Routes = [
     ViewAllComponent,
     SpeechItemComponent,
     AddSpeechComponent,
-    EditSpeechComponent
+    EditSpeechComponent,
+    SearchSpeechComponent
   ]
 
 })
