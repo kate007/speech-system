@@ -2,13 +2,12 @@
     <div class="card-body">
       <div class="row">
         <div class="col">
-          <h5 *ngIf="speechItem.author" class="card-title text-uppercase text-muted mb-0">{{ speechItem.author}} </h5>
+          <h5 *ngIf="speechItem.author" class="card-title text-uppercase text-muted mb-0">             
+           {{ speechItem.author}} </h5>
           <small *ngIf="speechItem.date">{{ speechItem.date | date }}</small>
         </div>
         <div class="col-auto">        
-            <span class="avatar avatar-sm rounded-circle">
-                <img alt="Image placeholder" src="assets/img/theme/team-4-800x800.jpg">
-          </span>
+          <strong class="page-item d-block text-muted" *ngIf="listIndex != null">{{listIndex + 1}}</strong>
         </div>
       </div>
       <p *ngIf="speechItem.text" class="mt-3 mb-0 text-muted text-sm">

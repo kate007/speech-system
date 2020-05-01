@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Speech } from '../../models/speech.model';
 import { SpeechService } from '../../services/speech.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search-speech',
@@ -8,14 +9,13 @@ import { SpeechService } from '../../services/speech.service';
   styleUrls: ['./search-speech.component.css']
 })
 export class SearchSpeechComponent implements OnInit {
-
+  focus;
   speechList: Speech[] = [];
   searchText:string = '';
-  constructor(private speechService:SpeechService ) { }
+  constructor(private speechService:SpeechService, private router:Router ) { }
 
   ngOnInit() {
-    this.speechList = this.speechService.getAll();
-      
+    this.speechList = this.speechService.getAll();      
   }
 
 }

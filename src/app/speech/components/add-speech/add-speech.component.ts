@@ -3,6 +3,7 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { SpeechService } from '../../services/speech.service';
 import { AlertComponent } from 'ngx-bootstrap/alert/alert.component';
 import { Speech } from  '../../models/speech.model';
+import {NgbDate, NgbCalendar} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-add-speech',

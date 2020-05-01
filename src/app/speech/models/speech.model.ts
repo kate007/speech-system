@@ -4,7 +4,7 @@ export class Speech {
     text:string;
     keywords: string;
     date:string;
-
+ 
     constructor(          
         author?:string,         
         text?:string,        

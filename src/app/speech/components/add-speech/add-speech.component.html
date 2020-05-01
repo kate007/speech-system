@@ -1,18 +1,19 @@
-<div class="card bg-secondary shadow">
-  <div class="card-header bg-white border-0">
-    <div class="row align-items-center">
-      <div class="col-8">
-        <h3 class="mb-0">Add Speech</h3>
-        <div *ngFor="let alert of alerts">
-          <alert [type]="alert.type" [dismissOnTimeout]="alert.timeout" (onClosed)="onClosed(alert)">{{ alert.msg }}</alert>
-        </div>
 
+<div class="header bg-gradient-danger pb-8 pt-3 pt-md-8 mb-3">
+  <div class="container">
+    <div *ngIf="alerts" class="col-12 m-0 p-0">
+      
+      <div *ngFor="let alert of alerts">
+        <alert [type]="alert.type" [dismissOnTimeout]="alert.timeout" (onClosed)="onClosed(alert)">{{ alert.msg }}</alert>
       </div>
-      <div class="col-4 text-right">
-       <!--  <a href="#!" class="btn btn-sm btn-primary">Settings</a> -->
-      </div>
+
     </div>
+ 
   </div>
+</div>
+
+<div class="container card bg-secondary shadow mt--9 p-0">
+  
   <div class="card-body">
     <form #speechForm="ngForm" (ngSubmit)="onSubmit(speechForm.value);speechForm.reset()">
       <h6 class="heading-small text-muted mb-4">Speech Details</h6>
@@ -35,11 +36,14 @@
           <div class="col-lg-6">
             <div class="form-group">
               <label class="form-control-label" for="date">Date</label>           
-              <input type="text" class="form-control form-control-alternative" #dp="bsDatepicker" bsDatepicker
-              [bsConfig]="{ adaptivePosition: true, containerClass: 'theme-blue' }" name="speechDate" [(ngModel)]="today">
-            <div class="calender-icon">
-              <i class="fa fa-calendar" aria-hidden="true" (click)="dp.toggle()"></i>
+        
+
+            <div class="d-flex align-items-center small">
+              <i class="fa fa-calendar text-muted position-absolute pl-3" (click)="dp.toggle()"></i>
+              <input type="text" class="form-control py-4" #dp="bsDatepicker" bsDatepicker
+              [bsConfig]="{ adaptivePosition: true, containerClass: 'theme-blue' }" name="speechDate" [(ngModel)]="today" style="padding-left: 38px;"/>
             </div>
+          
 
             </div>
           </div>
@@ -56,6 +60,8 @@
           </div>
         </div>               
       </div>
+
+      
       <div class="pl-lg-4 d-flex flex-row justify-content-end">       
 
         <button  class="btn btn-primary" [disabled]="speechText.invalid">    <i class="fa fa-floppy-o p-1" aria-hidden="true"></i>Add</button>

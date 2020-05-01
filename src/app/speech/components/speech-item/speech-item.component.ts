@@ -7,6 +7,7 @@ import { Speech } from  '../../models/speech.model';
 })
 export class SpeechItemComponent  {
   @Input() speechItem:Speech;
+  @Input() listIndex:number;
   constructor() { }
 
 }

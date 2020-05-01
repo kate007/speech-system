@@ -1,50 +1,55 @@
+
+
+
 <div class="card bg-secondary shadow">
-    <div class="card-header bg-white border-0">
+  <!--   <div class="card-header border-0">
       <div class="row align-items-center">
         <div class="col-8">
-          <h3 class="mb-0">Edit Speech</h3>
-          <div *ngFor="let alert of alerts">
-            <alert [type]="alert.type" [dismissOnTimeout]="alert.timeout" (onClosed)="onClosed(alert)">{{ alert.msg }}</alert>
-          </div>
-
-          <ng-template #emailTemplate>
-            <div class="modal-header">
-              <h4 class="modal-title pull-left">Email This Speech</h4>
-            </div>
-            <div class="modal-body">
-              <div class="form-group">
-                <label for="email">To: (Email)</label>
-                <input type="text" class="form-control">
-              </div>
-              <div class="form-group">
-                <label for="eubject">Subject</label>
-                <input type="text" class="form-control" value="Sharing my speech">
-              </div>
-              <div class="form-group">
-                <label for="emailBody">Body</label>
-                <textarea type="text" class="form-control" [(ngModel)]="mySpeech.text" rows="16"> </textarea>
-              </div> 
-              <button class="btn btn-outline-primary float-right">Send</button>
-              <button class="btn float-right" (click)="modalRef.hide()">Cancel</button>
-            </div>
-          </ng-template>
-
-          <ng-template #confirmDeleteTemplate> 
-            <div class="modal-body text-center">
-              <p>Are you sure you want to delete this speech?</p> 
-              <button type="button" class="btn btn-primary" (click)="confirmDelete()" >Yes</button>
-              <button type="button" class="btn btn-default" (click)="modalRef.hide()" >No</button>
-            </div>
-          </ng-template>
+      
+         
           
   
         </div>
         <div class="col-4 text-right">
-         <!--  <a href="#!" class="btn btn-sm btn-primary">Settings</a> -->
+       
         </div>
       </div>
-    </div>
+    </div> -->
     <div class="card-body">
+      <div *ngFor="let alert of alerts">
+        <alert [type]="alert.type" [dismissOnTimeout]="alert.timeout" (onClosed)="onClosed(alert)">{{ alert.msg }}</alert>
+      </div>
+
+      <ng-template #emailTemplate>
+        <div class="modal-header">
+          <h4 class="modal-title pull-left">Email This Speech</h4>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="email">To: (Email)</label>
+            <input type="text" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="eubject">Subject</label>
+            <input type="text" class="form-control" value="Sharing my speech">
+          </div>
+          <div class="form-group">
+            <label for="emailBody">Body</label>
+            <textarea type="text" class="form-control" [(ngModel)]="mySpeech.text" rows="16"> </textarea>
+          </div> 
+          <button class="btn btn-outline-primary float-right">Send</button>
+          <button class="btn float-right" (click)="modalRef.hide()">Cancel</button>
+        </div>
+      </ng-template>
+
+      <ng-template #confirmDeleteTemplate> 
+        <div class="modal-body text-center">
+          <p>Are you sure you want to delete this speech?</p> 
+          <button type="button" class="btn btn-primary" (click)="confirmDelete()" >Yes</button>
+          <button type="button" class="btn btn-default" (click)="modalRef.hide()" >No</button>
+        </div>
+      </ng-template>
+
       <form #speechForm="ngForm">
         <h6 class="heading-small text-muted mb-4">Speech Details</h6>
         <div class="pl-lg-4">
@@ -65,12 +70,17 @@
             </div>
             <div class="col-lg-6">
               <div class="form-group">
-                <label class="form-control-label" for="date">Date</label>           
-                <input type="text" class="form-control form-control-alternative" #dp="bsDatepicker" bsDatepicker
-                [bsConfig]="{ adaptivePosition: true, containerClass: 'theme-blue' }" name="speechDate" [(ngModel)]="mySpeech.date">
-              <div class="calender-icon">
-                <i class="fa fa-calendar" aria-hidden="true" (click)="dp.toggle()"></i>
-              </div>
+                <label class="form-control-label" for="speechDate">Date</label>
+            <div class="d-flex align-items-center small">
+              <i class="fa fa-calendar text-muted position-absolute pl-3" (click)="dp.toggle()"></i>
+              <input type="text" class="form-control py-4" #dp="bsDatepicker" bsDatepicker
+              [bsConfig]="{ adaptivePosition: true, containerClass: 'theme-blue' }" name="speechDate" [(ngModel)]="mySpeech.date" style="padding-left: 38px;"/>
+            </div>
+          
+
+
+
+            
   
               </div>
             </div>
