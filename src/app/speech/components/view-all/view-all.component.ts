@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { SpeechService } from '../../services/speech.service';
 import { Speech } from '../../models/speech.model';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-view-all',
@@ -9,20 +10,30 @@ import { Speech } from '../../models/speech.model';
 })
 export class ViewAllComponent implements OnInit {
 
+
   speechList: Speech[] = [];
   selectedSpeech:Speech;
   selectedIndex:number = 0;
-  constructor(private speechService:SpeechService) { }
+  bgColor:string;
+  
+  constructor(private speechService:SpeechService, private route:ActivatedRoute) { }
 
   ngOnInit() {                                      
+    this.selectedIndex = +this.route.snapshot.params.id || 0 ;     
     this.speechList = this.speechService.getAll();   
-    this.selectedSpeech = this.speechList[this.selectedIndex];     
+    if( this.speechList[this.selectedIndex] )
+    {
+       this.selectedSpeech = this.speechList[this.selectedIndex];  
+    } else {
+        this.selectedIndex = 0;
+    }   
   }
 
-  setSelectedIndex(i:number)
+  setSelectedIndex(i:number )
   {
     this.selectedIndex = i;
     this.setSelectedSpeech(this.selectedIndex);
+    
   }
 
   setSelectedSpeech(i:number)
@@ -38,4 +49,5 @@ export class ViewAllComponent implements OnInit {
       this.setSelectedIndex(0);
     }  
   }
+
 }

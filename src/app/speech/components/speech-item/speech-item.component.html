@@ -1,23 +1,27 @@
-<div class="card card-stats mb-4 mb-xl-0 page-link h-85 shadow" *ngIf="speechItem">
+<div class="card card-stats m-0 h-100 shadow"   hover-class="hovered-item" [class.bg-default]="selected" (click)="onClicked()" *ngIf="speechItem">
     <div class="card-body">
       <div class="row">
         <div class="col">
-          <h5 *ngIf="speechItem.author" class="card-title text-uppercase text-muted mb-0">             
+          <h5 *ngIf="speechItem.author" class="card-title text-uppercase text-muted mb-0" [class.text-white]="selected">             
            {{ speechItem.author}} </h5>
-          <small *ngIf="speechItem.date">{{ speechItem.date | date }}</small>
+          <small *ngIf="speechItem.date" [class.text-white]="selected">{{ speechItem.date | date }}</small>
         </div>
         <div class="col-auto">        
           <strong class="page-item d-block text-muted" *ngIf="listIndex != null">{{listIndex + 1}}</strong>
         </div>
       </div>
-      <p *ngIf="speechItem.text" class="mt-3 mb-0 text-muted text-sm">
-        
+      <p *ngIf="speechItem.text" class="mt-3 mb-0 text-muted text-sm" [class.text-white]="selected">        
         <span class="line-clamp-3"> 
             <span class="text-success mr-2"><i class="fa fa-quote-left" aria-hidden="true"></i></span>
             {{ speechItem.text}}
             <span class="text-success ml-2"><i class="fa fa-quote-right" aria-hidden="true"></i></span>
-        </span>                
-     
+        </span>  
       </p>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <ng-content></ng-content>
+      </div>
+      
     </div>
 </div>

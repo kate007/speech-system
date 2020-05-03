@@ -11,6 +11,7 @@ import { AlertModule } from 'ngx-bootstrap/alert';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { FormsModule } from '@angular/forms';
 import { FilterPipe } from './components/pipes/filter.pipe';
+import { HoverClassDirective } from './directives/hover-class.directive';
 
 const routes:Routes = [ 
   {
@@ -18,13 +19,13 @@ const routes:Routes = [
     component: ViewAllComponent
   },
   {
-    path:'add-speech', 
-    component: AddSpeechComponent
+    path:'view-all/:id', 
+    component: ViewAllComponent
   },
   {
-    path:'edit-speech', 
-    component: EditSpeechComponent
-  },
+    path:'add-speech', 
+    component: AddSpeechComponent
+  }, 
   {
     path:'search-speech', 
     component: SearchSpeechComponent
@@ -39,7 +40,8 @@ const routes:Routes = [
     AddSpeechComponent,
     EditSpeechComponent,
     SearchSpeechComponent,
-    FilterPipe
+    FilterPipe,
+    HoverClassDirective
   ],
   imports: [
     CommonModule,

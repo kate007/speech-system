@@ -10,3 +10,9 @@
 .h-85 {
     height: 85% !important;
 }
+
+.hovered-item {
+    background-color: #cfcfcf !important;
+    color: white !important;
+    cursor: pointer !important;
+}

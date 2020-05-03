@@ -6,7 +6,7 @@ import { Speech } from '../models/speech.model';
 export class SpeechService {
   private author:string = 'Winston Churchill';
   speeches: Speech[] = [];
-
+  editId:number = 0;
   counter:number = 0;
   constructor() { 
     this.addInitSpeeches();

@@ -60,9 +60,9 @@
 
       <div class="row">
         <div class="col-12">
-          <div class="d-flex flex-row justify-content-end"> 
-            <button  class="btn btn-outline-primary" (click)="onSubmit( speechForm);" [disabled]="speechText.invalid"> Add</button>
-            <button  class="btn btn-outline-info" (click)="clearForm( speechForm, $event);"> Clear</button>
+          <div class="d-flex flex-row justify-content-end">          
+            <button  class="btn btn-primary" (click)="clearForm( speechForm, $event);" > Clear</button>
+            <button  class="btn btn-success" (click)="onSubmit( speechForm);" [disabled]="speechText.invalid"> Add</button>
           </div>
         </div>
       </div>
