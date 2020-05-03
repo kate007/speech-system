@@ -2,11 +2,31 @@ import { Component, OnInit, ElementRef, ViewChild, AfterViewInit, Renderer2 } fr
 import { SpeechService } from '../../services/speech.service';
 import { Speech } from '../../models/speech.model';
 import { ActivatedRoute } from '@angular/router';
+import { trigger, state, style, transition, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-view-all',
   templateUrl: './view-all.component.html',
-  styleUrls: ['./view-all.component.css']
+  styleUrls: ['./view-all.component.css'],
+  animations: [
+    // the fade-in/fade-out animation.
+    trigger('simpleFadeAnimation', [
+
+      // the "in" style determines the "resting" state of the element when it is visible.
+      state('in', style({opacity: 1})),
+      state('out', style({opacity: 0})),
+
+      // fade in when created. this could also be written as transition('void => *')
+      transition(':enter', [
+        style({opacity: 0}),
+        animate(600 )
+      ]),
+
+      // fade out when destroyed. this could also be written as transition('void => *')
+      transition(':leave',
+        animate(600, style({opacity: 0})))
+    ])
+  ]
 })
 export class ViewAllComponent implements OnInit, AfterViewInit {
 
@@ -15,6 +35,7 @@ export class ViewAllComponent implements OnInit, AfterViewInit {
   selectedSpeech:Speech;
   selectedIndex:number = 0;
   bgColor:string;
+  prevIndex:number = 0;
   
   constructor(private speechService:SpeechService, private route:ActivatedRoute, private renderer:Renderer2) { }
 
@@ -39,9 +60,9 @@ export class ViewAllComponent implements OnInit, AfterViewInit {
 
   setSelectedIndex(i:number )
   {
+    this.prevIndex = this.selectedIndex;
     this.selectedIndex = i;
-    this.setSelectedSpeech(this.selectedIndex);
-    
+    this.setSelectedSpeech(this.selectedIndex);    
   }
 
   setSelectedSpeech(i:number)

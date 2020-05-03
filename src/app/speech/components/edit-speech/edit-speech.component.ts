@@ -14,7 +14,7 @@ export class EditSpeechComponent implements OnInit {
   @Input() mySpeech:Speech;
   @Output()  speechListChanged: EventEmitter<string> = new EventEmitter<string>();
   modalRef: BsModalRef;
-  alerts: any[] = [];
+  alert: any;
 
   constructor(private speechService:SpeechService, private modalService: BsModalService) { }
 
@@ -44,11 +44,11 @@ export class EditSpeechComponent implements OnInit {
 
  } 
  addAlert(type:string, msg:string): void {   
-  this.alerts.push({
+  this.alert = {
     type: type,
     msg: msg,
     timeout: 3000
-  });
+  };
 }
 
  delete()
@@ -82,10 +82,6 @@ confirmDelete(){
   }
   
  
-}
-
-onClosed(dismissedAlert: AlertComponent): void {
-  this.alerts = this.alerts.filter(alert => alert !== dismissedAlert);
 }
 
 }

@@ -17,10 +17,9 @@
     <ng-container *ngIf="speechList">
       <div *ngFor="let speech of speechList | filter : searchText ;let i =index; " class="list-group list-group-flush">
         
-          <app-speech-item *ngIf="speech"  [speechItem]="speech" class="mb-3" >
-            <button type="button" class="btn btn-primary btn-sm float-right mr-5 mb-3"  routerLink="/view-all/{{speech.id}}">Edit</button>         
-          </app-speech-item>          
-          
+          <app-speech-item *ngIf="speech"  [speechItem]="speech" class="mb-3" >         
+            <button type="button" class="btn btn-primary btn-sm float-right mr-3 mb-3"  routerLink="/view-all/{{speech.id}}">Edit</button>         
+          </app-speech-item>                    
       
       </div>
     </ng-container>
