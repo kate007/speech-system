@@ -35,14 +35,14 @@
       </ng-template>
 
 
-      <form #speechForm="ngForm" class="m-1 p-0">
+      <form #speechForm="ngForm" class="m-1 p-0 mb-6">
         <div class="row px-3">
           <h6 class="heading-small text-muted">Add Speech</h6>
        </div>
         <div class="row">
           <div class="col-12">
             <div class="form-group">           
-              <textarea rows="15" class="form-control form-control-alternative h-50" [class.is-invalid]="speechText.touched && speechText.invalid" 
+              <textarea rows="18" class="form-control form-control-alternative h-50" [class.is-invalid]="speechText.touched && speechText.invalid" 
               id="speech-text" #speechText="ngModel"  name="text" [(ngModel)]="mySpeech.text" required></textarea>
               <small class="text-danger" [class.d-none]="speechText.untouched || speechText.valid">Speech is required.</small>
             </div>
@@ -88,9 +88,9 @@
         <div class="row">
           <div class="col-12">
             <div class="d-flex flex-row justify-content-end"> 
-              <button (click)="openModal(emailTemplate)" class="btn btn-primary p-2 m-2"><i class="fa fa-envelope-o" aria-hidden="true"></i> Share</button>
-              <button (click)="openModal(confirmDeleteTemplate)"  type="submit" class="btn btn-danger p-2 m-2"> <i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>     
-              <button (click)="onSubmit(speechForm.value)"  class="btn btn-success p-2 m-2 " [disabled]="speechText.invalid"> <i class="fa fa-floppy-o p-1" aria-hidden="true"></i> Save  </button>         
+              <button (click)="openModal(emailTemplate)" class="btn btn-primary p-2 m-2"> Share</button>
+              <button (click)="openModal(confirmDeleteTemplate)"  type="submit" class="btn btn-danger p-2 m-2">  Delete</button>     
+              <button (click)="onSubmit(speechForm.value)"  class="btn btn-success p-2 m-2 " [disabled]="speechText.invalid"> Save  </button>         
        
             </div>
           </div>

@@ -8,14 +8,14 @@
   <div class="card m-0 bg-secondary">
     
   
-    <form #speechForm="ngForm" class="m-2 p-3">
+    <form #speechForm="ngForm" class="m-2 p-3 mb-6">
       <div class="row px-3">
         <h6 class="heading-small text-muted mb-4">Add Speech</h6>
      </div>
       <div class="row">
         <div class="col-12">
           <div class="form-group">           
-            <textarea type="text" rows="15" class="form-control form-control-alternative h-25" [class.is-invalid]="speechText.touched && speechText.invalid" 
+            <textarea type="text" rows="18" class="form-control form-control-alternative h-25" [class.is-invalid]="speechText.touched && speechText.invalid" 
           id="speech-text" #speechText="ngModel" name="text" placeholder="Speech" ngModel required></textarea>
           <small class="text-danger" [class.d-none]="speechText.untouched || speechText.valid">Speech is required.</small>
           </div>
