@@ -32,8 +32,8 @@
           </div>
         </div>
         <div class="card-body mh-70 vertical-scroll mb-3 mt-0 pt-0">       
-          <div class="list-group" *ngFor="let speech of speechList;let i =index;">
-            <app-speech-item class="list-group-item list-group-item-action p-0 m-0 mb-3 bg-primary h-100" 
+          <div  id="speechList-{{i}}" class="list-group" *ngFor="let speech of speechList;let i =index;">
+            <app-speech-item  class="list-group-item list-group-item-action p-0 m-0 mb-3 bg-primary h-100" 
             [listIndex]=i
             [speechItem]="speech" 
             [selected]="selectedIndex == i" 
