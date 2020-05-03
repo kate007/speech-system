@@ -4,7 +4,7 @@ import { Speech } from '../models/speech.model';
   providedIn: 'root'
 })
 export class SpeechService {
-  author:string = 'Winston Churchill';
+  private author:string = 'Winston Churchill';
   speeches: Speech[] = [];
 
   counter:number = 0;
@@ -62,11 +62,13 @@ export class SpeechService {
       
   }
 
+  getLoggedInAuthor():string
+  {
+      return this.author;
+  }
   private getIndexFromId(id:number)
   {
     return this.speeches.findIndex( x => x.id === id ); 
   }
-
-  
   
 }

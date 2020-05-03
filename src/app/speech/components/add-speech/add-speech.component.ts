@@ -4,25 +4,36 @@ import { SpeechService } from '../../services/speech.service';
 import { AlertComponent } from 'ngx-bootstrap/alert/alert.component';
 import { Speech } from  '../../models/speech.model';
 import {NgbDate, NgbCalendar} from '@ng-bootstrap/ng-bootstrap';
+import { Form, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-add-speech',
   templateUrl: './add-speech.component.html',
   styleUrls: ['./add-speech.component.css']
 })
-export class AddSpeechComponent {
+export class AddSpeechComponent implements OnInit {
 
   @ViewChild('speechText', {static: false}) speechText: ElementRef;
   @ViewChild('dialog', {static: false}) dialog: ElementRef;
   modalRef: BsModalRef;
   today = new Date();
   addSuccess:boolean; 
-  alerts: any[] = [];
-  constructor(private speechService:SpeechService, private modalService: BsModalService) { }
+  alert: any;
+  author:string = '';
 
-  onSubmit(value:any) {
-  
-    let speech: Speech = new Speech( this.speechService.author, value.text);
+  constructor(private speechService:SpeechService, private modalService: BsModalService) {  
+
+  }
+  ngOnInit()
+  {
+    this.author = this.speechService.getLoggedInAuthor();
+  }
+
+  onSubmit(form:FormGroup) {
+
+
+    let value = form.value;
+    let speech: Speech = new Speech( value.author, value.text);
     if( value.keywords )
     {
         speech.keywords = value.keywords;
@@ -31,36 +42,43 @@ export class AddSpeechComponent {
     {
         speech.date = value.speechDate;
     }
-    
+
     this.addSuccess = this.speechService.add(speech);
     if( this.addSuccess ) {
+
+    
       this.addAlert('success', 'Speech successfully added.');               
     
     } else {
       this.addAlert('danger', 'There was an error in updating.');
     }
+
+   
+    this.resetForm(form);
 } 
 
+
 addAlert(type:string, msg:string): void {   
-  this.alerts.push({
+  this.alert = {
     type: type,
     msg: msg,
     timeout: 3000
-  });
+  };
+
 }
 
 
-expand(template: TemplateRef<any>)
+
+resetForm(form:FormGroup)
 {
-  console.log(this.speechText);
- // console.log(this.speechText.nativeElement.value); 
- this.modalRef = this.modalService.show(template);
-}
+    form.reset({ 'speech-author': this.author, 'speechDate': this.today });
+} 
 
-onClosed(dismissedAlert: AlertComponent): void {
-  this.alerts = this.alerts.filter(alert => alert !== dismissedAlert);
+clearForm(form:FormGroup, event:any)
+{    
+   this.alert = null;
+   this.resetForm(form);
 }
-
 
 }
 

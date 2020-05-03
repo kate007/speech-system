@@ -23,7 +23,7 @@ export class EditSpeechComponent implements OnInit {
 
   onSubmit(value:any) {
     
-    let speech: Speech = new Speech( this.speechService.author, value.text);
+    let speech: Speech = new Speech( value.author, value.text);
     if( value.keywords )
     {
         speech.keywords = value.keywords;
