@@ -91,7 +91,7 @@ export class SpeechService {
   {
       return this.author;
   }
-  private getIndexFromId(id:number)
+  getIndexFromId(id:number)
   {
     return this.speeches.findIndex( x => x.id === id ); 
   }

@@ -44,7 +44,7 @@ export class ViewAllComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {            
-    this.selectedIndex = +this.route.snapshot.params.id || 0 ;    
+    this.selectedIndex = this.speechService.getIndexFromId( +this.route.snapshot.params.id || 0 );    
   
     this.speechService._speechesSubj.subscribe( speeches =>  { 
       this.speechList = this.speechService.getAll();
@@ -53,11 +53,11 @@ export class ViewAllComponent implements OnInit, AfterViewInit {
         if( this.speechList[this.selectedIndex] )
         {
            this.selectedSpeech = this.speechList[this.selectedIndex];  
+           this.setSelectedIndex(this.selectedIndex);      
         } else {
-           this.selectedIndex = 0;      
-           this.selectedSpeech = this.speechList[0];  
-        }   
-        this.setSelectedIndex(this.selectedIndex);      
+      
+          this.setSelectedIndex(0); 
+        }
       } 
      
     });
