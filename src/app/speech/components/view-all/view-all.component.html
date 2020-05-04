@@ -5,7 +5,7 @@
     </div>
     <div class="list-group d-flex flex-row no-wrap m-0 p-0 horizontal-scroll" *ngIf="speechList">
       <ng-container *ngFor="let speech of speechList;let i =index;">
-        <app-speech-item class="col-10" 
+        <app-speech-item class="col-10 col-md-8" 
         [listIndex]=i 
         [speechItem]="speech" 
         [selected]="selectedIndex == i"
@@ -19,7 +19,7 @@
 
 <div class="container-fluid mt--8">
   <div class="row">
-    <div class="col-xl-4 d-none d-lg-block">
+    <div class="col-lg-5 col-xl-4 d-none d-lg-block">
       <!--show only on lg and xl-->
       <div class="card bg-info shadow">
         <div class="card-header bg-transparent pb-1">
@@ -31,7 +31,7 @@
             </div>
           </div>
         </div>
-        <div class="card-body mh-70 vertical-scroll mb-3 mt-0 pt-0">       
+        <div class="card-body mh-80 vertical-scroll mb-3 mt-0 pt-0">       
       
           <div  id="speechList-{{i}}" class="list-group" *ngFor="let speech of speechList;let i =index;"  [@simpleFadeAnimation]="'in'">
            
@@ -46,7 +46,7 @@
       </div>
     </div>
  
-    <div *ngIf="selectedSpeech" class="col-xl-8 mb-5 mb-xl-0 mh-70 mb-3">
+    <div *ngIf="selectedSpeech" class="col-lg-7 col-xl-8 mb-5 mb-xl-0 mh-70 mb-3">
       <app-edit-speech   [mySpeech]=selectedSpeech
         (speechListChanged)="onEditSpeechResultChange($event)">
       </app-edit-speech>

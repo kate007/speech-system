@@ -21,9 +21,14 @@
             <label for="emailBody">Body</label>
             <textarea type="text" class="form-control" [(ngModel)]="mySpeech.text" rows="16"> </textarea>
           </div> 
-          <button class="btn btn-outline-primary float-right">Send</button>
-          <button class="btn float-right" (click)="modalRef.hide()">Cancel</button>
-        </div>
+          <div class="row">
+            <div class="col-12">
+              <button class="btn btn-primary  m-2 float-right">Send</button>
+              <button class="btn btn-default m-2 float-right" (click)="modalRef.hide()">Cancel</button>
+        
+            </div>           
+          </div>
+          </div>
       </ng-template>
 
       <ng-template #confirmDeleteTemplate> 

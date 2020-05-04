@@ -1,4 +1,8 @@
-.photo-container {
-    height: 250px !important;
-    width:260px !important;
+.profile-photo {
+    width: 200px;
+    height: 200px;    
+    border-radius: 100px;
+    background-size: contain;   
+    z-index: 1000;
+    
 }
