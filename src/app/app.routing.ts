@@ -6,7 +6,7 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 const routes: Routes =[
   {
     path: '',
-    redirectTo: 'view-all',
+    redirectTo: 'view-all/0',
     pathMatch: 'full',
   }, {
     path: '',
@@ -20,7 +20,7 @@ const routes: Routes =[
   }, 
   {
     path: '**',
-    redirectTo: 'view-all'
+    redirectTo: 'view-all/0'
   }
 ];
 

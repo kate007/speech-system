@@ -80,8 +80,8 @@ confirmDelete(){
     this.addAlert('danger', 'There was an error in deleting.');
     this.modalRef.hide();
   }
-  
  
 }
+
 
 }

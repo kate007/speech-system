@@ -25,7 +25,7 @@
       <div class="row">
         <div class="col-12">
           <div class="form-group">        
-            <input type="text" id="speech-author" class="form-control form-control-alternative" placeholder="Author" name="speech-author" [(ngModel)]="author" required>            
+            <input type="text" id="speech-author" class="form-control form-control-alternative" placeholder="Author" name="speech-author" [(ngModel)]="author" readonly>            
             <small class="text-danger" [class.d-none]="speechText.untouched || speechText.valid">Author is required.</small>
           </div>
         </div>       
@@ -37,7 +37,7 @@
           <div class="d-flex align-items-center small">
             <i class="fa fa-calendar text-muted position-absolute pl-3" (click)="dp.toggle()"></i>
             <input type="datetime" class="form-control py-4" #dp="bsDatepicker" bsDatepicker
-            [bsConfig]="{ adaptivePosition: true, containerClass: 'theme-blue' }" name="speechDate" [(ngModel)]="today" style="padding-left: 38px;"/>
+            [bsConfig]="{ adaptivePosition: true, containerClass: 'theme-blue', dateInputFormat: 'YYYY-MM-DD'  }" name="speechDate" [(ngModel)]="today" style="padding-left: 38px;"/>
           </div>
           </div>
         </div>

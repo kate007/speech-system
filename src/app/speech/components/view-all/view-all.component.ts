@@ -3,6 +3,7 @@ import { SpeechService } from '../../services/speech.service';
 import { Speech } from '../../models/speech.model';
 import { ActivatedRoute } from '@angular/router';
 import { trigger, state, style, transition, animate } from '@angular/animations';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-view-all',
@@ -30,32 +31,49 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 })
 export class ViewAllComponent implements OnInit, AfterViewInit {
 
-
+  speechList$:Observable<Speech[]>;
   speechList: Speech[] = [];
   selectedSpeech:Speech;
   selectedIndex:number = 0;
   bgColor:string;
   prevIndex:number = 0;
+  speeches$: Observable<Speech[]>;
   
-  constructor(private speechService:SpeechService, private route:ActivatedRoute, private renderer:Renderer2) { }
+  constructor(private speechService:SpeechService, private route:ActivatedRoute, private renderer:Renderer2) { 
 
-  ngOnInit() {                                      
-    this.selectedIndex = +this.route.snapshot.params.id || 0 ;     
-    this.speechList = this.speechService.getAll();   
-    if( this.speechList[this.selectedIndex] )
-    {
-       this.selectedSpeech = this.speechList[this.selectedIndex];  
-    } else {
-        this.selectedIndex = 0;
-    }   
+  }
+
+  ngOnInit() {            
+    this.selectedIndex = +this.route.snapshot.params.id || 0 ;    
   
+    this.speechService._speechesSubj.subscribe( speeches =>  { 
+      this.speechList = this.speechService.getAll();
+      if(this.speechList)
+      {
+        if( this.speechList[this.selectedIndex] )
+        {
+           this.selectedSpeech = this.speechList[this.selectedIndex];  
+        } else {
+           this.selectedIndex = 0;      
+           this.selectedSpeech = this.speechList[0];  
+        }   
+        this.setSelectedIndex(this.selectedIndex);      
+      } 
+     
+    });
+    
+ 
   }
 
   ngAfterViewInit()
-  {
-    const element = this.renderer.selectRootElement('#speechList-' + (this.selectedIndex).toString(), true);
-    element.scrollIntoView({ behavior: 'smooth' });
-    //this.initScroll(0, this.selectedIndex);  
+  {  
+  
+    if(this.renderer.selectRootElement('#speechList-' + (this.selectedIndex).toString(), true))
+    {
+      const element = this.renderer.selectRootElement('#speechList-' + (this.selectedIndex).toString(), true);
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+      
   }
 
   setSelectedIndex(i:number )
