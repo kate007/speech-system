@@ -21,13 +21,10 @@ export class NavbarComponent implements OnInit {
     
   }
   getTitle(){
-    var titlee = this.location.prepareExternalUrl(this.location.path());
-    console.log(titlee);
-    /* if(titlee.charAt(0) === '#'){
-        titlee = titlee.slice( 1 );
-    } */
+    let titlee = this.location.prepareExternalUrl(this.location.path());
+   
 
-    for(var item = 0; item < this.listTitles.length; item++){
+    for(let item = 0; item < this.listTitles.length; item++){
       
         if( titlee.includes(this.listTitles[item].path)){
             return this.listTitles[item].title;
